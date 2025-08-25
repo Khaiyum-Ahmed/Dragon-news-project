@@ -7,11 +7,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import HomeLayouts from './Layouts/HomeLayouts';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1>Home Layout</h1>,
+    element: <HomeLayouts></HomeLayouts>,
   },
   {
     path:"/news",
