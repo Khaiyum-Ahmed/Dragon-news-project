@@ -1,5 +1,6 @@
 import Header from "../Components/Header";
 import LatestNews from "../Components/LatestNews";
+import Navbar from "../Components/Navbar";
 
 const HomeLayouts = () => {
     return (
@@ -10,8 +11,10 @@ const HomeLayouts = () => {
                     <LatestNews></LatestNews>
                 </section>
             </header>
-            <nav></nav>
-            <main></main>
+            <nav className="w-11/12 mx-auto py-5">
+                <Navbar></Navbar>
+            </nav>
+            <main className="w-11/12 mx-auto pt-6"></main>
         </div>
     );
 };
