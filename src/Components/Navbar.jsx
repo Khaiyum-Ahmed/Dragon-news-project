@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <div className="flex justify-between items-center">
             <div className=""></div>
-            <div className="nav space-x-6">
+            <div className="nav space-x-6 text-[#706F6F] text-[18px]">
                 <Link to="/">Home</Link>
                 <Link to="/about">About</Link>
                 <Link to="/career">Career</Link>
@@ -13,7 +13,7 @@ const Navbar = () => {
             <div className="login">
                <div className="flex gap-2.5 items-center">
                  <img src={userIcon} alt="" />
-                <button className="btn btn-neutral rounded-none">Login</button>
+                <button className="text-white font-semibold text-xl py-2 px-6 bg-[#403F3F]">Login</button>
                </div>
             </div>
         </div>
