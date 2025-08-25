@@ -9,3 +9,12 @@ body {
     font-style: normal;
 
 }
+a.active{
+    background-color: #E7E7E7;
+    border: 1px solid #E7E7E7;
+    border-radius: 5px;
+    color: #403F3F;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 16px 0px;
+}
