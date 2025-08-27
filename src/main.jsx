@@ -13,6 +13,7 @@ import CategoryNews from './Pages/CategoryNews';
 import ErrorPage from './Pages/ErrorPage';
 import AuthLayouts from './Layouts/AuthLayouts';
 import Login from './Pages/Login';
+import Register from './Pages/Register';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/auth/register",
-        element: <h2>register</h2>
+        element: <Register></Register>
       }
     ]
   },
