@@ -11,6 +11,8 @@ import {
 import HomeLayouts from './Layouts/HomeLayouts';
 import CategoryNews from './Pages/CategoryNews';
 import ErrorPage from './Pages/ErrorPage';
+import AuthLayouts from './Layouts/AuthLayouts';
+import Login from './Pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +36,17 @@ const router = createBrowserRouter([
   },
   {
     path:"/auth",
-    element: <h1>Login</h1>
+    element: <AuthLayouts></AuthLayouts>,
+    children:[
+      {
+        path:"/auth/login",
+        element: <Login></Login>
+      },
+      {
+        path:"/auth/register",
+        element: <h2>register</h2>
+      }
+    ]
   },
   {
     path:"*",
