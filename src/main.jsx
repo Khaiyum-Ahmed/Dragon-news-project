@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import HomeLayouts from './Layouts/HomeLayouts';
 import CategoryNews from './Pages/CategoryNews';
+import ErrorPage from './Pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
   },
   {
     path:"*",
-    element: <h1>Error</h1>
+    element: <ErrorPage></ErrorPage>
   }
 ]);
 
