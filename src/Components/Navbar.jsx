@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import userIcon from "../assets/user.png"
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
+    const {user}   = useContext(AuthContext);
     return (
         <div className="flex justify-between items-center">
-            <div className=""></div>
+            <div className="">{user.name}</div>
             <div className="nav space-x-6 text-[#706F6F] text-[18px]">
                 <Link to="/">Home</Link>
                 <Link to="/about">About</Link>

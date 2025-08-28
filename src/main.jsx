@@ -14,49 +14,52 @@ import ErrorPage from './Pages/ErrorPage';
 import AuthLayouts from './Layouts/AuthLayouts';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import AuthProvider from './Provider/AuthProvider';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayouts></HomeLayouts>,
-    children:[
+    children: [
       {
-        path:"",
+        path: "",
         element: <Navigate to={"/category/01"}></Navigate>
       },
       {
-        path:"/category/:id",
+        path: "/category/:id",
         element: <CategoryNews></CategoryNews>,
-        loader: ({params})=>fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
+        loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
       }
     ]
   },
   {
-    path:"/news",
+    path: "/news",
     element: <h1>news layout</h1>
   },
   {
-    path:"/auth",
+    path: "/auth",
     element: <AuthLayouts></AuthLayouts>,
-    children:[
+    children: [
       {
-        path:"/auth/login",
+        path: "/auth/login",
         element: <Login></Login>
       },
       {
-        path:"/auth/register",
+        path: "/auth/register",
         element: <Register></Register>
       }
     ]
   },
   {
-    path:"*",
+    path: "*",
     element: <ErrorPage></ErrorPage>
   }
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )
