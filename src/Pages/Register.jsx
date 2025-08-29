@@ -3,7 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Register = () => {
-    const { signUpUsers } = useContext(AuthContext);
+    const { signUpUsers, setUser } = useContext(AuthContext);
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -19,7 +19,7 @@ const Register = () => {
         // create new users
         signUpUsers(email, password)
             .then(result => {
-                console.log(result.user)
+                setUser(result.user.email)
             })
             .catch((error) => {
                 const errorCode = error.code;
