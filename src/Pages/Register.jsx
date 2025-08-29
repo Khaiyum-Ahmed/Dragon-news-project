@@ -19,7 +19,9 @@ const Register = () => {
         // create new users
         signUpUsers(email, password)
             .then(result => {
-                setUser(result.user.email)
+                const user = result.user;
+
+                setUser(user.email)
             })
             .catch((error) => {
                 const errorCode = error.code;
