@@ -1,15 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Register = () => {
     const { signUpUsers, setUser } = useContext(AuthContext);
+    const [error, setError] = useState({});
 
     const handleRegister = (e) => {
         e.preventDefault();
         // get form data
         const form = new FormData(e.target);
         const name = form.get("name");
+        if(name.length < 5){
+            setError({...error, name:"must be more the 5 character long"});
+            return;
+        }
         const email = form.get("email");
         const photo = form.get("photo");
         const password = form.get("password");
@@ -41,7 +46,10 @@ const Register = () => {
                         <fieldset className="fieldset gap-4">
                             <label className="label font-semibold text-xl text-[#403F3F]">Your Name</label>
                             <input type="text" className="input w-full text-base bg-[#F3F3F3] border-none" placeholder="Enter your name"
-                                name="name" />
+                            name="name" />
+                            {
+                                error.name && (<label className="label font-medium text-base text-red-600">{error.name}</label>)
+                            }
 
                             <label className="label font-semibold text-xl text-[#403F3F]">Photo URL</label>
                             <input type="text" className="input w-full text-base bg-[#F3F3F3] border-none" placeholder="Enter your photo URL"

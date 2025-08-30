@@ -1,9 +1,14 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
     const { signInUsers, setUser } = useContext(AuthContext);
+    const [error, setError] = useState({})
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    
     const handleLogIn = (e) => {
         e.preventDefault();
         const from = e.target;
@@ -16,9 +21,10 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
+                navigate(location?.state ? location.state: "/")
             })
-            .catch((error) => {
-               alert(error.code)
+            .catch((wrong) => {
+                setError({...error, login:wrong.code})
             });
     }
     return (
@@ -38,6 +44,9 @@ const Login = () => {
                             <input type="password"
                                 name="password"
                                 className="input w-full text-base bg-[#F3F3F3] border-none" placeholder="Enter your password" />
+                                {
+                                    error.login && (<label className="label font-semibold text-base text-red-500">{error.login}</label>)
+                                }
                             <div><a className="link link-hover font-medium text-base text-[#706F6F]">Forgot password?</a></div>
                             <button className="btn btn-neutral font-semibold text-xl bg-[#403F3F] mt-4">Login</button>
                         </fieldset>
