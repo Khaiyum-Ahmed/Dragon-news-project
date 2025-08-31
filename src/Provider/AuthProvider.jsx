@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../Pages/Firebase/Firebase.config";
   // eslint-disable-next-line react-refresh/only-export-components
@@ -9,6 +9,17 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const googleProvider = new GoogleAuthProvider();
+    const gitHubProvider = new GithubAuthProvider();
+
+    const googleSignIn = ()=>{
+        return signInWithPopup(auth, googleProvider);
+    };
+
+    const gitHubSignIn = () =>{
+        return signInWithPopup(auth, gitHubProvider)
+    }
 
     const signUpUsers = (email,password)=>{
         setLoading(true);
@@ -38,6 +49,8 @@ const AuthProvider = ({children}) => {
         signInUsers,
         logOut,
         updateUserProfile,
+        googleSignIn,
+        gitHubSignIn,
         loading
     };
        useEffect(()=>{
